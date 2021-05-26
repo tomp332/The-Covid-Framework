@@ -1,0 +1,41 @@
+version: '3'
+services:
+  backend:
+    container_name: backend
+    restart: always
+    env_file:
+        "CovidFramework-Server/.env"
+    environment:
+       - HOST=covidframework.com
+       - NODE_ENV=production
+    build:
+      context: "CovidFramework-Server"
+      dockerfile: Dockerfile
+    image: "covidframework-server-image:v1"
+    ports:
+      - "3000:3000"
+    networks:
+      - webappnetwork
+  frontend:
+    restart: always
+    container_name: frontend
+    build:
+      context: ./CovidFramework-App
+      dockerfile: Dockerfile
+    env_file:
+        "CovidFramework-App/.env"
+    environment:
+       - REACT_APP_API_URL=covidframework.com
+       - SSL_CRT_FILE=.cert/covidframework.com/cert.pem
+       - SSL_KEY_FILE=.cert/covidframework.com/privkey.pem
+       - NODE_ENV=production
+    image: "covidframework-app-image:v1"
+    ports:
+      - "443:443"
+    networks:
+      - webappnetwork
+    depends_on:
+      - backend
+networks:
+   webappnetwork:
+        driver: bridge
