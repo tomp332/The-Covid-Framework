@@ -35,10 +35,8 @@ Enjoy!
 &nbsp;&nbsp;&nbsp;
 
 ### Diagram
-<div style="width: 960px; height: 720px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:960px; height:720px" src="https://lucid.app/documents/embeddedchart/f5f97d79-221c-4e97-b666-f0e38c843065" id="XpoMnh2DNPzx"></iframe></div>
 
-
-<img src="./ProjectPictures/CovidDiagram.png" width="650" height="300" />
+<img src="./ProjectPictures/Diagram.png" width="650" height="300" />
 
 &nbsp;&nbsp;&nbsp;
 
