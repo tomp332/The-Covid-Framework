@@ -30,6 +30,7 @@ Enjoy!
 |Upload/Download files|Retrieve or upload files| 
 |Interactive powershell|Start interactive powershell command\response| 
 |Location|Live location based on wifi routers around, or public IP address|
+|Login popup|Pormpt login popup for user login credentials|
 
 &nbsp;&nbsp;&nbsp;
 
