@@ -36,7 +36,7 @@ Enjoy!
 
 ### Diagram
 
-<img src="./ProjectPictures/Diagram.png" width="650" height="300" />
+<img src="./ProjectPictures/Diagram.jpeg" width="650" height="300" />
 
 &nbsp;&nbsp;&nbsp;
 
