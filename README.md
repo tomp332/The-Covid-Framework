@@ -42,7 +42,5 @@ Enjoy!
 
 ## ScreenShots
 
-<img src="./ProjectPictures/Home.png" height="350" width="650"/>
-<img src="./ProjectPictures/Clients.png" height="250" width="750"/>
-
 ### Credits
+
