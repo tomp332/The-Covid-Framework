@@ -30,18 +30,21 @@ Enjoy!
 |Upload/Download files|Retrieve or upload files| 
 |Interactive powershell|Start interactive powershell command\response| 
 |Location|Live location based on wifi routers around, or public IP address|
+|Login popup|Prompt login popup for user login credentials|
 
 &nbsp;&nbsp;&nbsp;
 
 ### Diagram
 
-<img src="./ProjectPictures/CovidDiagram.png" width="650" height="300" />
+<img src="./ProjectPictures/Diagram.jpeg" width="650" height="300" />
 
 &nbsp;&nbsp;&nbsp;
 
 ## ScreenShots
 
-<img src="./ProjectPictures/Home.png" height="350" width="650"/>
-<img src="./ProjectPictures/Clients.png" height="250" width="750"/>
-
 ### Credits
+  All credits to dvbergmann@github.com & pako648@github.com
+  
+### Contributions and comments
+pakoa648@pakoa648@gmail.com 
+
