@@ -46,5 +46,5 @@ Enjoy!
   All credits to dvbergmann@github.com & pako648@github.com
   
 ### Contributions and comments
-pakoa648@pakoa648@gmail.com 
+pakoa648@gmail.com 
 
