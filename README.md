@@ -43,7 +43,7 @@ Enjoy!
 ## ScreenShots
 
 ### Credits
-  All credits to dvbergmann@github.com & pako648@github.com
+  All credits to dvbergmann @github.com & P@ko @github.com
   
 ### Contributions and comments
 pakoa648@gmail.com 
