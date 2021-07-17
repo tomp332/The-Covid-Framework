@@ -15,10 +15,7 @@ services:
        - NODE_ENV=production
     volumes:
        - covid-volume:/usr/share/covid-volume
-    build:
-      context: "CovidFramework-Server"
-      dockerfile: Dockerfile
-    image: "covidframework-server-image:v1"
+    image: "ghcr.io/pako332/covid-framework/server:latest"
     ports:
       - "3000:3000"
     networks:
@@ -26,9 +23,6 @@ services:
   frontend:
     restart: always
     container_name: frontend
-    build:
-      context: ./CovidFramework-App
-      dockerfile: Dockerfile
     env_file:
         "CovidFramework-App/.env"
     environment:
@@ -38,7 +32,7 @@ services:
        - NODE_ENV=production
     volumes:
        - covid-volume:/usr/share/covid-volume
-    image: "covidframework-app-image:v1"
+    image: "ghcr.io/pako332/covid-framework/app:latest"
     ports:
       - "443:443"
     networks:
