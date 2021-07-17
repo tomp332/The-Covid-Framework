@@ -106,6 +106,15 @@ alias edit='vim ~/.bashrc'
 alias v='vim'
 alias sai='sudo apt install'
 
+
+###### Docker functions ###########
+
+update_images(){
+	echo "Updating app and server images"
+	sudo docker pull ghcr.io/pako332/covid-framework/app:latest
+	sudo docker pull ghcr.io/pako332/covid-framework/server:latest
+}
+
 ###### DOCKER ALIASES #######
 backendID=$(sudo docker ps -a | grep 'covidframework-server' |cut -d ' ' -f 1)
 frontendID=$(sudo docker ps -a | grep 'covidframework-server' |cut -d ' ' -f 1)
@@ -114,6 +123,7 @@ alias docker-remove-containers='sudo docker rm $(sudo docker ps -a -q)'
 alias launch-covid='updateall && cd ~ && sudo docker-compose up -d'
 alias backend='sudo docker exec -it $backendID /bin/bash'
 alias frontend='sudo docker exec -it $frontendID /bin/bash'
-alias serverLogs='sudo dcker exec -it $backendID cat ServerLogs.log'
-alias reloadCovid='cd ~ && updateall && sudo docker-compose up --build'
+alias serverLogs='sudo docker exec -it $backendID cat ServerLogs.log'
+alias reloadCovid='update_images && sudo docker-compose up --build'
 alias docker-rm-cache='sudo docker system prune -a -f'
+alias ghcr-login='echo $CR_PAT | sudo docker login ghcr.io -u pako332 --password-stdin'
