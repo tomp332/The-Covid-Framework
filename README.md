@@ -25,8 +25,8 @@ Enjoy!
 | Wifi passwords| Get all stored wifi passwords | 
 | Persistence| Taskscheduler based persistence| 
 |Chrome passwords|Get all stored local chrome passwords| 
-|Privilege escalation|P.E based onfodehelper| 
-|Change background image|Change background of the remote desktop| 
+|Privilege escalation|P.E based on fodehelper| 
+|Change background image|Change background of the infected computer| 
 |Upload/Download files|Retrieve or upload files| 
 |Interactive powershell|Start interactive powershell command\response| 
 |Location|Live location based on wifi routers around, or public IP address|
