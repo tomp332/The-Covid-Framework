@@ -31,6 +31,7 @@ Enjoy!
 |Interactive powershell|Start interactive powershell command\response| 
 |Location|Live location based on wifi routers around, or public IP address|
 |Login popup|Prompt login popup for user login credentials|
+|Webcam picture| Take a live webcam picture from the infected computer|
 
 &nbsp;&nbsp;&nbsp;
 
