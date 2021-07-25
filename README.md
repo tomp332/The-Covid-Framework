@@ -32,6 +32,7 @@ Enjoy!
 |Location|Live location based on wifi routers around, or public IP address|
 |Login popup|Prompt login popup for user login credentials|
 |Webcam picture| Take a live webcam picture from the infected computer|
+|Chrome browser history| Get all browser history from Chrome|
 
 &nbsp;&nbsp;&nbsp;
 
