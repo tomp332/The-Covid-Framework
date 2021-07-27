@@ -2,14 +2,13 @@ version: '3'
 
 volumes:
   covid-volume:
-          external: true
 
 services:
   backend:
     container_name: backend
     restart: always
     env_file:
-        "CovidFramework-Server/.env"
+        "server.env"
     environment:
        - HOST=covidframework.com
        - NODE_ENV=production
@@ -24,7 +23,7 @@ services:
     restart: always
     container_name: frontend
     env_file:
-        "CovidFramework-App/.env"
+        "app.env"
     environment:
        - REACT_APP_API_URL=covidframework.com
        - SSL_CRT_FILE=.cert/covidframework.com/cert.pem
