@@ -1,5 +1,4 @@
 version: '3'
-
 volumes:
   covid-volume:
     external: true
@@ -7,7 +6,7 @@ services:
   backend:
     container_name: backend
     restart: always
-    # Reload the env variables that are already loaded in the image
+    # Overwrite some env variables
     environment:
       - HOST=covidframework.com
       - NODE_ENV=production
@@ -21,7 +20,7 @@ services:
   frontend:
     restart: always
     container_name: frontend
-    # Reload the env variables that are already loaded in the image
+    # Overwrite some env variables
     environment:
       - REACT_APP_API_URL=covidframework.com
       - NODE_ENV=production
