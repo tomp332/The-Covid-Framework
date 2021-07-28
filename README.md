@@ -40,8 +40,8 @@ Enjoy!
 
 ```
   chmod +x install_certs.sh
-  ./install_certs.sh
-  docker-compose up
+  sudo ./install_certs.sh
+  sudo docker-compose up
 ```
 
 ### Diagram
