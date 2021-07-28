@@ -1,6 +1,0 @@
-[submodule "CovidFramework-Server"]
-	path = CovidFramework-Server
-	url = https://github.com/pako332/CovidFramework-Server.git
-[submodule "CovidFramework-App"]
-	path = CovidFramework-App
-	url = https://github.com/pako332/CovidFramework-App.git
