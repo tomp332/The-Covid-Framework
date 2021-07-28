@@ -36,6 +36,14 @@ Enjoy!
 
 &nbsp;&nbsp;&nbsp;
 
+### Installation
+
+```
+  chmod +x install_certs.sh
+  ./install_certs.sh
+  docker-compose up
+```
+
 ### Diagram
 
 <img src="./ProjectPictures/Diagram.jpeg" width="650" height="300" />
