@@ -1,7 +1,6 @@
 version: '3'
-volumes:
-  covid-volume:
-    external: true
+
+
 services:
   backend:
     container_name: backend
@@ -10,13 +9,14 @@ services:
     environment:
       - HOST=covidframework.com
       - NODE_ENV=production
+      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority
     volumes:
        - covid-volume:/usr/share/covid-volume
     image: "ghcr.io/pako332/covid-framework/server:latest"
     ports:
       - "3000:3000"
     networks:
-      - webappnetwork
+      - covid-network
   frontend:
     restart: always
     container_name: frontend
@@ -30,9 +30,14 @@ services:
     ports:
       - "443:443"
     networks:
-      - webappnetwork
+      - covid-network
     depends_on:
       - backend
+
+volumes:
+  covid-volume:
+    external: true
+
 networks:
-   webappnetwork:
+   covid-network:
         driver: bridge
