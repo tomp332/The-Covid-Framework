@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  backend:
+    container_name: backend
+    restart: always
+    image: "ghcr.io/pako332/covid-framework/server-local:latest"
+    ports:
+      - "3000:3000"
+
+  frontend:
+    restart: always
+    container_name: frontend
+    image: "ghcr.io/pako332/covid-framework/app-local:latest"
+    ports:
+      - "443:443"
+    depends_on:
+      - backend
