@@ -36,12 +36,12 @@ Enjoy!
 
 &nbsp;&nbsp;&nbsp;
 
-### Installation
+### Local environment deployment
 
 ```
-  chmod +x install_certs.sh
-  sudo ./install_certs.sh
-  sudo docker-compose up
+cd local_env
+docker-compose up
+
 ```
 
 ### Diagram
