@@ -24,6 +24,7 @@ services:
     environment:
       - REACT_APP_API_URL=covidframework.com
       - NODE_ENV=production
+      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority
     volumes:
        - covid-volume:/usr/share/covid-volume
     image: "ghcr.io/pako332/covid-framework/app:latest"
