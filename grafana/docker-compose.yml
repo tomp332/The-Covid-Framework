@@ -7,8 +7,8 @@ services:
     # Overwrite some env variables
     volumes:
        - grafana-volume:/var/lib/grafana
-       - certs/privkey.pem:/etc/grafana/privkey.pem
-       - certs/cert.pem:/etc/grafana/cert.pem
+       - ../certs/privkey.pem:/etc/grafana/privkey.pem
+       - ../certs/cert.pem:/etc/grafana/cert.pem
        - custom.ini:/etc/grafana/grafana.ini
     image: grafana/grafana
     ports:
