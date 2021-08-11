@@ -4,7 +4,6 @@ services:
   covid-grafana:
     container_name: covid-grafana
     restart: always
-    # Overwrite some env variables
     volumes:
        - grafana-volume:/var/lib/grafana
        - ../certs/privkey.pem:/etc/grafana/privkey.pem
