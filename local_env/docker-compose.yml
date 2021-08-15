@@ -8,6 +8,9 @@ services:
     image: "ghcr.io/pako332/covid-framework/server-local:latest"
     ports:
       - "3000:3000"
+  #environment:
+      #- HOST=localhost # Enter your own local ip
+      #- ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # Enter your own mongo DB url
 
   frontend:
     restart: always
@@ -15,5 +18,8 @@ services:
     image: "ghcr.io/pako332/covid-framework/app-local:latest"
     ports:
       - "443:443"
+    environment:
+      #- REACT_APP_API_URL=covidframework.com # Enter your own local ip
+      #- ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # Enter your own mongo DB url
     depends_on:
       - backend
