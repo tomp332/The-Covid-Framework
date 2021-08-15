@@ -5,13 +5,13 @@ services:
     container_name: covid-grafana
     restart: always
     volumes:
-       - grafana-volume:/var/lib/grafana
+       - grafana-volume:/var/lib/grafana # Volume for all grafana data
        - ../certs/privkey.pem:/etc/grafana/privkey.pem #production certificate
        - ../certs/cert.pem:/etc/grafana/cert.pem #production certificate
-       - ./custom.ini:/etc/grafana/grafana.ini
+       - ./custom.ini:/etc/grafana/grafana.ini # Grafana config file
     image: grafana/grafana
     ports:
       - "5000:5000"
 
 volumes:
-  grafana-volume:
+  grafana-volume: # Volume for all grafana data

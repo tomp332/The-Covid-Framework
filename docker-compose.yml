@@ -39,12 +39,12 @@ services:
       - backend
 
 
-  grafana:
+  covid-grafana:
     restart: always
-    container_name: grafana
+    container_name: covid-grafana
     image: "grafana/grafana"
     volumes:
-      - grafana-volume2:/var/lib/grafana
+      - grafana-volume:/var/lib/grafana
       - ./certs/privkey.pem:/etc/grafana/privkey.pem
       - ./certs/cert.pem:/etc/grafana/cert.pem
       - ./grafana/custom.ini:/etc/grafana/grafana.ini
@@ -56,7 +56,7 @@ services:
       - backend
   
 volumes:
-  grafana-volume2:
+  grafana-volume:
 
 networks:
    covid-network:
