@@ -10,8 +10,8 @@ services:
       - NODE_ENV=production
       - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority
     volumes:
-      - ./certs/cert.pem:/usr/share/covid-volume/cert.pem
-      - ./certs/privkey.pem:/usr/share/covid-volume/privkey.pem
+      - ./certs/cert.pem:/usr/share/cert.pem
+      - ./certs/privkey.pem:/usr/share/privkey.pem
     image: "ghcr.io/pako332/covid-framework/server:latest"
     ports:
       - "3000:3000"
@@ -56,7 +56,6 @@ services:
       - backend
   
 volumes:
-  covid-volume:
   grafana-volume:
 
 networks:
