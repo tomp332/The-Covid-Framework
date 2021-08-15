@@ -42,8 +42,6 @@ services:
   grafana:
     restart: always
     container_name: grafana
-    volumes:
-       - covid-volume:/usr/share/covid-volume
     image: "grafana/grafana"
     volumes:
       - grafana-volume:/var/lib/grafana
@@ -58,6 +56,7 @@ services:
       - backend
   
 volumes:
+  covid-volume:
   grafana-volume:
 
 networks:
