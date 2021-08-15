@@ -6,8 +6,8 @@ services:
     restart: always
     volumes:
        - grafana-volume:/var/lib/grafana
-       - ../certs/privkey.pem:/etc/grafana/privkey.pem
-       - ../certs/cert.pem:/etc/grafana/cert.pem
+       - ../certs/privkey.pem:/etc/grafana/privkey.pem #production certificate
+       - ../certs/cert.pem:/etc/grafana/cert.pem #production certificate
        - ./custom.ini:/etc/grafana/grafana.ini
     image: grafana/grafana
     #environment:
