@@ -1,6 +1,5 @@
 version: '3'
 
-
 services:
   backend:
     container_name: backend
@@ -11,12 +10,15 @@ services:
       - NODE_ENV=production
       - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority
     volumes:
-       - covid-volume:/usr/share/covid-volume
+      - ./certs/cert.pem:/usr/share/covid-volume/cert.pem
+      - ./certs/privkey.pem:/usr/share/covid-volume/privkey.pem
     image: "ghcr.io/pako332/covid-framework/server:latest"
     ports:
       - "3000:3000"
     networks:
       - covid-network
+
+
   frontend:
     restart: always
     container_name: frontend
@@ -26,7 +28,8 @@ services:
       - NODE_ENV=production
       - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority
     volumes:
-       - covid-volume:/usr/share/covid-volume
+      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem
+      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem
     image: "ghcr.io/pako332/covid-framework/app:latest"
     ports:
       - "443:443"
@@ -35,9 +38,29 @@ services:
     depends_on:
       - backend
 
+
+  grafana:
+    restart: always
+    container_name: grafana
+    volumes:
+       - covid-volume:/usr/share/covid-volume
+    image: "grafana/grafana"
+    volumes:
+      - grafana-volume:/var/lib/grafana
+      - ./certs/privkey.pem:/etc/grafana/privkey.pem
+      - ./certs/cert.pem:/etc/grafana/cert.pem
+      - ./grafana/custom.ini:/etc/grafana/grafana.ini
+    ports:
+      - "5000:5000"
+    networks:
+      - covid-network
+    depends_on:
+      - backend
+  
 volumes:
   covid-volume:
     external: true
+  grafana-volume:
 
 networks:
    covid-network:
