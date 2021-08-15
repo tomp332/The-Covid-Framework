@@ -58,8 +58,6 @@ services:
       - backend
   
 volumes:
-  covid-volume:
-    external: true
   grafana-volume:
 
 networks:
