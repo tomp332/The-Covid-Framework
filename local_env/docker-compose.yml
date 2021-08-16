@@ -6,8 +6,8 @@ services:
     restart: always
     image: "ghcr.io/pako332/covid-framework/server-local:latest"
     environment:
-        - HOST=192.168.1.101 # Enter your own local ip
-        #- ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # Enter your own mongo DB url
+        - HOST=192.168.1.101 #<Enter your own local ip>
+        #- ATLAS_URI_MONGO= <Enter your own mongo DB url>
 
   frontend:
     restart: always
@@ -16,7 +16,7 @@ services:
     ports:
       - "443:443"
     environment:
-      - REACT_APP_API_URL=192.168.1.101  # <Enter your own local ip>
+      - REACT_APP_API_URL=192.168.1.101  #<Enter your own local ip>
       #- ATLAS_URI_MONGO= <Enter your own mongo DB url>
     depends_on:
       - backend
@@ -31,7 +31,8 @@ services:
       - ./certs/cert.pem:/etc/grafana/cert.pem
       - ./grafana/custom.ini:/etc/grafana/grafana.ini
     environment:
-      - GF_SERVER_HOST=192.168.1.101 #<Enter your own local ip>
+      - GF_SERVER_DOMAIN=192.168.1.101 #<Enter your own local ip>
+      - GF_SERVER_HTTP_ADDR=192.168.1.101 #<Enter your own local ip>
     networks:
       - covid-network
     ports:
