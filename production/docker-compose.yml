@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  backend:
+    container_name: backend
+    restart: always
+    # Overwrite some env variables
+    environment:
+      - HOST=covidframework.com
+      - NODE_ENV=production
+      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # production mongo url
+    volumes:
+      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem #covidframework.com cert
+      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem #covidframework.com cert
+    image: "ghcr.io/pako332/covid-framework/server:latest"
+    networks:
+      - covid-network
+
+
+  frontend:
+    restart: always
+    container_name: frontend
+    # Overwrite some env variables
+    environment:
+      - REACT_APP_API_URL=covidframework.com
+      - NODE_ENV=production
+      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # production mongo url
+    volumes:
+      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem #covidframework.com cert
+      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem #covidframework.com cert
+    image: "ghcr.io/pako332/covid-framework/app:latest"
+    ports:
+      - "443:443"
+    networks:
+      - covid-network
+    depends_on:
+      - backend
+
+
+  covid-grafana:
+    restart: always
+    container_name: covid-grafana
+    image: "grafana/grafana"
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+      - ./certs/privkey.pem:/etc/grafana/privkey.pem #covidframework.com cert
+      - ./certs/cert.pem:/etc/grafana/cert.pem #covidframework.com cert
+      - ./grafana/custom.ini:/etc/grafana/grafana.ini
+    networks:
+      - covid-network
+    depends_on:
+      - backend
+
+networks:
+   covid-network:
+        driver: bridge

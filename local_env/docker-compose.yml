@@ -27,8 +27,8 @@ services:
     image: "grafana/grafana"
     volumes:
       - ./grafana/data:/var/lib/grafana
-      - ../../certs/privkey.pem:/etc/grafana/privkey.pem
-      - ../../certs/cert.pem:/etc/grafana/cert.pem
+      - ./certs/privkey.pem:/etc/grafana/privkey.pem
+      - ./certs/cert.pem:/etc/grafana/cert.pem
       - ./grafana/custom.ini:/etc/grafana/grafana.ini
     environment:
       - GF_SERVER_HOST=192.168.1.101 #<Enter your own local ip>
