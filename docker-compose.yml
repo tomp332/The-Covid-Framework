@@ -13,8 +13,8 @@ services:
       - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem
       - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem
     image: "ghcr.io/pako332/covid-framework/server:latest"
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     networks:
       - covid-network
 
