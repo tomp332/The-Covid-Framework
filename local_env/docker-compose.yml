@@ -37,14 +37,14 @@ services:
     environment:
       - GF_SERVER_DOMAIN=192.168.1.101 #<Enter your own local ip>
       - GF_SERVER_HTTP_ADDR=192.168.1.101 #<Enter your own local ip>
-    networks:
-      - covid-network
     ports:
       - "5000:5000"
+    networks:
+      - covid-network
     depends_on:
       - backend
   
-  networks:
-   covid-network:
-        driver: bridge
+networks:
+  covid-network:
+      driver: bridge
 
