@@ -8,6 +8,8 @@ services:
     environment:
         - HOST=192.168.1.101 #<Enter your own local ip>
         #- ATLAS_URI_MONGO= <Enter your own mongo DB url>
+    networks:
+      - covid-network
 
   frontend:
     restart: always
@@ -20,6 +22,8 @@ services:
       #- ATLAS_URI_MONGO= <Enter your own mongo DB url>
     depends_on:
       - backend
+    networks:
+      - covid-network
 
   covid-grafana:
     restart: always
