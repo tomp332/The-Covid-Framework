@@ -48,8 +48,8 @@ services:
       - ./certs/privkey.pem:/etc/grafana/privkey.pem
       - ./certs/cert.pem:/etc/grafana/cert.pem
       - ./grafana/custom.ini:/etc/grafana/grafana.ini
-    ports:
-      - "5000:5000"
+    # ports:
+    #   - "5000:5000"
     networks:
       - covid-network
     depends_on:
