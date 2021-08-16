@@ -44,7 +44,7 @@ services:
     container_name: covid-grafana
     image: "grafana/grafana"
     volumes:
-      - grafana-volume:/var/lib/grafana
+      - ./grafana/data:/var/lib/grafana
       - ./certs/privkey.pem:/etc/grafana/privkey.pem
       - ./certs/cert.pem:/etc/grafana/cert.pem
       - ./grafana/custom.ini:/etc/grafana/grafana.ini
