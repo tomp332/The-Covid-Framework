@@ -1,16 +1,13 @@
 version: '3'
 
 services:
-
   backend:
     container_name: backend
     restart: always
     image: "ghcr.io/pako332/covid-framework/server-local:latest"
-    ports:
-      - "3000:3000"
-  #environment:
-      #- HOST=localhost # Enter your own local ip
-      #- ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # Enter your own mongo DB url
+    environment:
+        - HOST=192.168.1.101 # Enter your own local ip
+        #- ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # Enter your own mongo DB url
 
   frontend:
     restart: always
@@ -19,7 +16,30 @@ services:
     ports:
       - "443:443"
     environment:
-      #- REACT_APP_API_URL=covidframework.com # Enter your own local ip
-      #- ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # Enter your own mongo DB url
+      - REACT_APP_API_URL=192.168.1.101  # <Enter your own local ip>
+      #- ATLAS_URI_MONGO= <Enter your own mongo DB url>
     depends_on:
       - backend
+
+  covid-grafana:
+    restart: always
+    container_name: covid-grafana
+    image: "grafana/grafana"
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+      - ../../certs/privkey.pem:/etc/grafana/privkey.pem
+      - ../../certs/cert.pem:/etc/grafana/cert.pem
+      - ./grafana/custom.ini:/etc/grafana/grafana.ini
+    environment:
+      - GF_SERVER_HOST=192.168.1.101 #<Enter your own local ip>
+    networks:
+      - covid-network
+    ports:
+      - "5000:5000"
+    depends_on:
+      - backend
+  
+  networks:
+   covid-network:
+        driver: bridge
+

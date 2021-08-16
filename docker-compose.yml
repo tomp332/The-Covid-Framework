@@ -8,13 +8,11 @@ services:
     environment:
       - HOST=covidframework.com
       - NODE_ENV=production
-      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority
+      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # production mongo url
     volumes:
-      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem
-      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem
+      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem #covidframework.com cert
+      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem #covidframework.com cert
     image: "ghcr.io/pako332/covid-framework/server:latest"
-    # ports:
-    #   - "3000:3000"
     networks:
       - covid-network
 
@@ -26,10 +24,10 @@ services:
     environment:
       - REACT_APP_API_URL=covidframework.com
       - NODE_ENV=production
-      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority
+      - ATLAS_URI_MONGO=mongodb+srv://admin:RRTGwiGAwoSzem8K@covidcluster.spwpg.mongodb.net/CovidFramework?retryWrites=true&w=majority # production mongo url
     volumes:
-      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem
-      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem
+      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem #covidframework.com cert
+      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem #covidframework.com cert
     image: "ghcr.io/pako332/covid-framework/app:latest"
     ports:
       - "443:443"
@@ -45,11 +43,9 @@ services:
     image: "grafana/grafana"
     volumes:
       - ./grafana/data:/var/lib/grafana
-      - ./certs/privkey.pem:/etc/grafana/privkey.pem
-      - ./certs/cert.pem:/etc/grafana/cert.pem
+      - ./certs/privkey.pem:/etc/grafana/privkey.pem #covidframework.com cert
+      - ./certs/cert.pem:/etc/grafana/cert.pem #covidframework.com cert
       - ./grafana/custom.ini:/etc/grafana/grafana.ini
-    # ports:
-    #   - "5000:5000"
     networks:
       - covid-network
     depends_on:
