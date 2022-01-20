@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    restart: always
+    # Overwrite some env variables
+    environment:
+      - HOST=<Your Server Domain\IP>
+      - PORT=<Your Server Port>
+      - NODE_ENV=production
+      - ATLAS_URI_MONGO=<MongoDB url for connection>
+      - GOOGLE_API_KEY=<Google geolocation API key for wifi locations>
+    volumes:
+      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem
+      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem
+    image: "ghcr.io/pako332/covid-framework/server:latest"
+    networks:
+      - covid-network
+
+
+  frontend:
+    restart: always
+    container_name: frontend
+    # Overwrite some env variables
+    environment:
+      - PORT=<Your Server Port>
+      - REACT_APP_API_URL=<Your server Domain\IP>
+      - NODE_ENV=production
+      - REACT_APP_REMOTE_PORT=<Your internal server port>
+      - GOOGLE_API_KEY=<Google geolocation API key for wifi locations>
+      - HTTPS=<If to enable https traffic>
+    volumes:
+      - ./certs/cert.pem:/usr/share/ca-certificates/cert.pem #covidframework.com cert
+      - ./certs/privkey.pem:/usr/share/ca-certificates/privkey.pem #covidframework.com cert
+    image: "ghcr.io/pako332/covid-framework/app:latest"
+    ports:
+      - "443:443"
+    networks:
+      - covid-network
+    depends_on:
+      - backend
+
+
+  covid-grafana:
+    restart: always
+    container_name: covid-grafana
+    image: "grafana/grafana"
+    volumes:
+      - grafana-volume:/var/lib/grafana
+      - "./grafana/data/grafana.db:/var/lib/grafana/grafana.db:rw"
+      - ./grafana/data/plugins:/var/lib/grafana/plugins
+      - ./certs/privkey.pem:/etc/grafana/privkey.pem
+      - ./certs/cert.pem:/etc/grafana/cert.pem
+      - ./grafana/custom.ini:/etc/grafana/grafana.ini
+    networks:
+      - covid-network
+    depends_on:
+      - backend
+
+networks:
+   covid-network:
+        driver: bridge
+volumes:
+        grafana-volume:
