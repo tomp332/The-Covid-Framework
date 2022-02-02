@@ -26,7 +26,7 @@
 
 # About
 This project's main goal is to create an exploitation framework and an all in one website to maintain an exploitation session.
-It provides built in functions in order to execute remote code on a target machine. In this project we tried to combine an open-source UI based project with the also the client side being open-source aswell.
+It provides built in functions in order to execute remote code on a target machine. In this project we tried to combine an open-source UI based project with the also the client side being open-source as well.
 With the CovidFramework you can setup your own environment with a full compatible exploitation framework server and client. 
 
 TheCovidFramework has it built with 3 main parts:
